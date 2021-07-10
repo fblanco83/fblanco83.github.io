@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="IE=edge" http-equiv="X-UA-Compatible" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <title>
+        The Watcher
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.6.0/dist/cyborg/bootstrap.min.css">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
+    <link href="jquery.auto-complete.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="heading">
+        <h1>The Watcher</h1>
+    </div>
+    <div class="container d-flex flex-column w-100">
+        <div class="row  align-self-center w-100">
+            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto" id="messages">
+            </div>
+        </div>
+        <div class="row align-self-center w-100" id="loginDiv">
+            <div class="col-lg-3 col-md-6 col-sm-8 mx-auto">
+                <input type="text" name="u" id="iu" class="form-control form-group" placeholder="username" autocomplete="off" value="nightowl">
+                <input type="password" name="password" id="ip" class="form-control form-group" placeholder="password" autocomplete="off" value="batman">
+                <button class="btn btn-lg btn-primary btn-block" id="login" type="submit">Login</button>
+            </div>
+        </div>
+        <div class="row align-self-center w-100">
+            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto goodStuff" id="goodStuff">
+                <button class="btn btn-lg btn-primary float-right" id="searchBTN" class="searchBTN" type="button">Search</button>
+                <button class="btn btn-lg btn-secondary float-right add" id="addBTN" class="addBTN" type="button">Add</button>
+                <button class="btn btn-lg btn-primary float-right" id="incidentsBTN" class="incidentsBTN" type="button">Incidents</button>
+
+                <div id="actions" class="float-right">
+
+                </div>
+                <div id="loader" class="loader">Loading...</div>
+                <h2 class="subheading" id="subheading"></h2>
+                <div class="search" id="search">
+                    <input type="text" name="searchInput" id="searchInput" class="form-control form-control-lg searchInput" placeholder="Search" autocomplete="off">
+                </div>
+                <div class="superheroes" id="superheroes"></div>
+                <div class="superhero" id="superhero"></div>
+                <div class="add" id="add">
+                    <p>* Images will be added automagically after a few incidents.</p>
+                    <input type="text" name="sName" id="sName" class="form-control form-control-lg" placeholder="Name" autocomplete="off">
+                    <textarea id="sBio" name="sBio" placeholder="Short Bio" class="form-control form-control-lg"></textarea>
+                    <div class="addOptions">
+                        <i class="fas fa-arrow-circle-left addBTN" data-action="cancel" data-toggle="tooltip" data-placement="top" title="Cancel"></i>
+                        <i class="far fa-save addBTN" data-action="save" data-toggle="tooltip" data-placement="top" title="Save"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    Are you sure you want to delete <span id="deleteName"></span>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="cancelDelete">Cancel</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="confirmDelete" data-id="">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js" integrity="sha512-nOQuvD9nKirvxDdvQ9OMqe2dgapbPB7vYAMrzJihw5m+aNcf0dX53m6YxM4LgA9u8e9eg9QX+/+mPu8kCNpV2A==" crossorigin=" anonymous" referrerpolicy="no-referrer"></script>
+    <script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src=" https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.32/moment-timezone-with-data.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.bundle.min.js" integrity="sha512-wV7Yj1alIZDqZFCUQJy85VN+qvEIly93fIQAN7iqDFCPEucLCeNFz4r35FCo9s6WrpdDQPi80xbljXB8Bjtvcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="jquery.auto-complete.js"></script>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
